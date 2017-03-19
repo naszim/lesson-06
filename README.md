@@ -15,6 +15,13 @@ Learn to create basic visualizations in R with ```base``` and ```ggplot2``` pack
 ## Lesson 06 Content
 
 * Part 1
+	* ```base``` and ```ggplot2```
+	* Reshape data
+	* Bar graphs
+	* Line graphs
+	* Scatter plots
+	* Plotting distributions
+	* Output to file
 	* Literature
 		
 * Part 2
