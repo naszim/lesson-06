@@ -1,0 +1,33 @@
+---
+title: "2. Feladatok"
+subtitle: |
+  | Kurzus: Programozás I. 6. óra
+author: |
+  | Oktató: Balogh Kitti kttblgh@gmail.com
+date: "Időpont: 2017-03-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+---
+
+## I. Feladat
+1. A ```lesson-06``` projekt ```src``` mappájában nyiss egy új R szkriptet ```prog1_lesson06_part02_Feladatok.R``` néven, aminek a fejléce tartalmazza a következőket: 
+    - fájl címe (Feladatok)
+    - kurzus neve (Programozás I.)
+    - óra sorszáma (6. óra)
+    - neved
+    - dátum (2017-03-21)
+2. Figyelj, hogy kommentelj, és minél jobban betartsd a R kódírási stílusra vonatkozó irányelveket!
+
+---
+
+## II. feladat
+1. Olvasd be ```data``` mappából a ```gapminder.csv```-t ```gm``` néven.
+2. Ábrázold a ```lifeExp``` oszlop adatait hisztogramon és rajzold rá a sűrűségfüggvény görbét! A plot hasonlítson minél jobban a kimentett ```fig/part02/exercise_II_2.png``` ábrára! A hisztogram színe ```grey65```, a sűrűség görbe színe ```aquamarine```.
+3. Készíts egy oszlopdiagramot, ami leginkább hasonlít a kimentett ```fig/part02/exercise_II_3.png``` ábrára! Az oszlopok színe legyen egy paletta az ```aquamarine, aquamarine1, aquamarine2, aquamarine3, aquamarine4``` színekkel. [Itt](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/){target="_blank"} találsz róla infót, hogy hogyan tudsz manuálisan palettát beállítani.
+4.
+5. 

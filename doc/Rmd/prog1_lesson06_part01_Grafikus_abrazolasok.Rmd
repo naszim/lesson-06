@@ -12,6 +12,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = '../../')
 ```
+--------------------------------------------------------------------------------
 
 ## Vázlat
 
@@ -36,6 +37,8 @@ knitr::opts_knit$set(root.dir = '../../')
 - [Plotok kimentése](#plotok-kimentese)
 - [Irodalom](#irodalom)
 
+--------------------------------------------------------------------------------
+
 ## ```base``` és ```ggplot2```
 - az R alapjáraton tartalmaz ábrázolásra használható függvényeket és emellett van egy nagyon kedvelt package, a ```ggplot2```, ami kifejezetten vizualizációs célú
 - hogy melyik használata a jobb, egyrészt célfüggő, másrészt attól is függ, hogy ki mit szokott meg:
@@ -49,6 +52,8 @@ knitr::opts_knit$set(root.dir = '../../')
   * 3D plotok (pl. ```rgl```, ```scatterplot3d```)
   * hálózatok (pl. ```igraph```, ```d3Network```, ```ggnet2```)
   * interaktív plotok (pl. ```ggvis```, ```d3r```, ```plotly```)
+
+--------------------------------------------------------------------------------
 
 ## Adatok előkészítése a vizualizációkhoz
 - vizualizálni leginkább data frame objektumokat szoktunk, de package-től függően mátrixokat, vektorokat is
@@ -87,6 +92,8 @@ long_df <- melt(wide_df, id.vars=c("subject", "sex"),
 long_df
 
 ```
+
+--------------------------------------------------------------------------------
 
 ## Oszlopdiagramok (Bar Graphs)
 - az x tengelyen az ábrázolandó kategória jelenik meg
@@ -133,7 +140,7 @@ barplot(pg_mean$weight, names.arg = pg_mean$group,
 head(diamonds)
 
 ## ggplot2
-# gyakoriságot ábrázolunk: stat = "identity"
+# gyakoriságot ábrázolunk: stat = "count"
 ggplot(data = diamonds, aes(x = cut)) + 
   geom_bar(stat = "count", fill="#AFC0CB") +
   ggtitle("Count of diamond cuts") +
@@ -182,6 +189,8 @@ legend("topright", row.names(cabbage_mat), pch = 15, col = mf_col)
 barplot(cabbage_mat, border = NA, col = mf_col)
 legend("topright", row.names(cabbage_mat), pch = 15, col = mf_col)
 ```
+
+--------------------------------------------------------------------------------
 
 ## Vonaldiagramok (Line Graphs)
 - ha azt szeretnénk ábrázolni, hogy egy folytonos változót (y-tengely), hogy hogyan alakul egy másik folytonos változó függvényében (x-tengely)
@@ -272,6 +281,8 @@ mtext("Dinner", side = 1, at = 2)
 legend("topleft", c("Lunch", "Dinner"), pch = 15, col = mf_col)
 
 ```
+
+--------------------------------------------------------------------------------
 
 ## Pontfelhődiagramok/szórásdiagramok (Scatter plots)
 - két folytonos változó kapcsolatát ábrázoljuk vele
@@ -382,6 +393,8 @@ pairs(c2009[,2:5], upper.panel = panel.cor,
       diag.panel = panel.hist, lower.panel = panel.lm)
 ```
 
+--------------------------------------------------------------------------------
+
 ## Eloszlások ábrázolása
 
 ### Hisztogramok és sűrűségfüggvények
@@ -476,25 +489,29 @@ ggplot(dat4, aes(x = cond, y = rating, fill=cond)) + geom_boxplot()
 boxplot(dat4$rating ~ dat4$cond, data = dat4, col=c('mistyrose', 'powderblue'))
 ```
 
+--------------------------------------------------------------------------------
+
 ## Plotok kimentése
 
 ```{r, echo = TRUE}
 #---Plotok kimentése------------------------------------------------------------
 # új mappa létrehozása a plotoknak
-dir.create("fig", showWarnings = FALSE)
+dir.create("fig/part01", showWarnings = FALSE)
 
 ## ggplot2
 ggplot(dat4, aes(x = cond, y = rating, fill=cond)) + geom_boxplot()
 # amilyen kiterjesztést megadunk a fájlnévben, olyanba menti ki
 # pdf, jpeg, svg, eps, png stb.
-ggsave("fig/ggplot2_boxplot.png", width = 10, height = 5, dpi = 100)
+ggsave("fig/part01/ggplot2_boxplot.png", width = 10, height = 5, dpi = 100)
 
 ## base
 # pdf, svg, png stb. függvények attól függően, hogy mibe szeretnénk menteni
-png("fig/base_boxplot.png", width = 960, height = 560, res = 120)
+png("fig/part01/base_boxplot.png", width = 960, height = 560, res = 120)
 boxplot(dat4$rating ~ dat4$cond, data = dat4, col=c('mistyrose', 'powderblue'))
 dev.off()
 ```
+
+--------------------------------------------------------------------------------
 
 ## Irodalom
 - Chang, W. (2013): R Graphics Cookbook. O'Reilly
