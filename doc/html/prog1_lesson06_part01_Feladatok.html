@@ -145,10 +145,13 @@ $(document).ready(function () {
 <h2>II. feladat</h2>
 <ol style="list-style-type: decimal">
 <li>Olvasd be <code>data</code> mappából a <code>gapminder.csv</code>-t <code>gm</code> néven.</li>
-<li>Ábrázold a <code>lifeExp</code> oszlop adatait hisztogramon és rajzold rá a sűrűségfüggvény görbét! A plot hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_2.png</code> ábrára! A hisztogram színe <code>grey65</code>, a sűrűség görbe színe <code>aquamarine</code>.</li>
-<li><p>Készíts egy oszlopdiagramot, ami leginkább hasonlít a kimentett <code>fig/part02/exercise_II_3.png</code> ábrára! Az oszlopok színe legyen egy paletta az <code>aquamarine, aquamarine1, aquamarine2, aquamarine3, aquamarine4</code> színekkel. <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" target="_blank">Itt</a> találsz róla infót, hogy hogyan tudsz manuálisan palettát beállítani.</p></li>
-<li></li>
+<li>Ábrázold a születéskor várható élettartamot (<code>lifeExp</code> oszlop) hisztogramon, rajzold rá a sűrűségfüggvény görbét és az átlagot egy függőleges vonallal! A hisztogram színe legyen <code>grey65</code>, a sűrűség görbe színe pedig <code>aquamarine</code>. A plot hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_2.png</code> ábrára!</li>
+<li>Készíts egy oszlopdiagramot a kontinensenkénti átlagos születéskor várható élettartammal. Az oszlopok színe legyen egy paletta az <code>#999999, #E69F00, #56B4E9, #009E73, #0072B2</code> színkódú színekkel. <a href="http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/" target="_blank">Itt</a> találsz róla infót, hogy hogyan tudsz manuálisan palettát beállítani, ha <code>ggplot2</code>-vel dolgozol, és <a href="http://www.r-tutor.com/elementary-statistics/qualitative-data/bar-graph" target="_blank">itt</a>, ha a <code>base</code> package-gel. A plot hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_3.png</code> ábrára!</li>
+<li>Készíts egy szórásdiagramot a születéskor várható élettartamról 2007-ben. Az alapegységek legyenek az országok, de a színezés legyen kontinensenként. Használd az előző palettát a színezéshez. Az egyes kontinensek országainak pontfelhőjére illessz lineáris regressziós egyenest! Az y-tengelyt tedd logaritmikus skálára (log10). A diagram hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_4.png</code> ábrára!</li>
+<li>Ábrázold a kontinensenkénti születéskor várható élettartamot 1952-től 2007-ig vonaldiagrammal. Használd az előző palettát a színezéshez. A plot hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_5.png</code> ábrára!</li>
+<li>Ábrázold az országonkénti átlagos születéskor várható élettartam és az átlagos egy főre jutó GDP kapcsolatát szórásdiagramon! Az alapegységek legyenek az országok, de a pontok színezése legyen kontinensenként. Használd az előző palettát a színezéshez. Feliratozd a pontokat az országok nevével. Az y-tengelyt tedd logaritmikus skálára (log10). A plot hasonlítson minél jobban a kimentett <code>fig/part02/exercise_II_6.png</code> ábrára!</li>
 </ol>
+<hr />
 </div>
 
 
