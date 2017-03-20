@@ -352,7 +352,7 @@ ggplot(dat3, aes(x = xvar, y = yvar, shape = cond)) +
 plot(dat3$xvar, dat3$yvar, col = dat3$cond)
 
 plot(dat3$xvar, dat3$yvar, pch = unclass(dat3$cond))
-legend("bottomright", legend=levels(dat3$cond), pch=c(1:3))
+legend("bottomright", legend = levels(dat3$cond), pch = c(1:3))
 ```
 
 ### Annotált szórásdiagramok
@@ -430,13 +430,19 @@ hist(faithful$waiting, breaks = 6)
 ggplot(faithful, aes(x = waiting)) + geom_density()
 
 # hisztogram és sűrűségfüggvény görbéje együtt
+## ggplot2
 ggplot(faithful, aes(x = waiting)) + 
     geom_histogram(aes(y = ..density..), binwidth = 5, 
                    colour = "black", fill = "white") +
     geom_density(alpha = .2, fill = "#FF6666")
 
 ## base
-plot(density(faithful$waiting))
+hist(faithful$waiting, prob = TRUE,
+     main = "Histogram and density plot of life expentancy",
+     xlab = "Life expentancy",
+     ylab = "Density")
+lines(density(faithful$waiting))
+polygon(density(faithful$waiting), col = alpha("#FF6666", 0.2))
 
 ### átlag berajzolása
 ## ggplot2
@@ -473,7 +479,10 @@ hist(subset(dat4, cond == "B")$rating,
      breaks = 10, add = T)
 
 # sűrűségfüggvény
-# sm package-gel lehet
+plot(density(subset(dat4, cond == "A")$rating), 
+     col = rgb(0, 0, 1, 1/4))
+lines(density(subset(dat4, cond == "B")$rating), 
+     col = rgb(1, 0, 0, 1/4))
 ```
 
 ### Box plotok
