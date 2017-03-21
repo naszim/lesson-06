@@ -20,16 +20,16 @@ wide_df
 
 # átalakítás long formatra a melt függvénnyel
 # id.vars: kategóriát tartalmazó oszlop(ok), amit meg akarunk tartani
-melt(wide_df, id.vars=c("subject", "sex"))
+melt(wide_df, id.vars = c("subject", "sex"))
 
 # átalakítás long formatra további opciókkal
 # measure.vars: értéket, gyakoriságokat tartalmazó forrás oszlopok
 # variable.name: új oszlop neve, hogy az érték, gyakoriság honnan jön
 # value.name: értéket, gyakoriságot tartalmazó új oszlop neve
-long_df <- melt(wide_df, id.vars=c("subject", "sex"),
-                measure.vars=c("control", "cond1", "cond2" ), 
-                variable.name="condition",
-                value.name="measurement")
+long_df <- melt(wide_df, id.vars = c("subject", "sex"),
+                measure.vars = c("control", "cond1", "cond2" ), 
+                variable.name = "condition",
+                value.name = "measurement")
 long_df
 
 
@@ -50,7 +50,7 @@ pg_mean
 # bar graph-ot készítünk: geom_bar
 # értéket ábrázolunk: stat = "identity"
 ggplot(data = pg_mean, aes(x = group, y = weight)) + 
-  geom_bar(stat = "identity", fill="#AFC0CB") +
+  geom_bar(stat = "identity", fill = "#AFC0CB") +
   ggtitle("Means of results from an experiment on plant growth") +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -69,7 +69,7 @@ head(diamonds)
 ## ggplot2
 # gyakoriságot ábrázolunk: stat = "identity"
 ggplot(data = diamonds, aes(x = cut)) + 
-  geom_bar(stat = "count", fill="#AFC0CB") +
+  geom_bar(stat = "count", fill = "#AFC0CB") +
   ggtitle("Count of diamond cuts") +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -132,12 +132,12 @@ ggplot(BOD1, aes(x = Time, y = demand, group = 1)) + geom_line()
 
 ## base
 # line graph-ot csinálunk: plot függvény type = "l" argumentummal 
-plot(BOD$Time, BOD$demand, type = "l", xlab = "time", ylab = "total bill")
+plot(BOD$Time, BOD$demand, type = "l", xlab = "time", ylab = "demand")
 
 # y-tengely most nem időt jelöl, hanem más folytonos változó
 # data frame definiálása
 dat1 <- data.frame(
-  time = factor(c("Lunch","Dinner"), levels=c("Lunch","Dinner")),
+  time = factor(c("Lunch", "Dinner"), levels=c("Lunch", "Dinner")),
   total_bill = c(14.89, 17.23)
 )
 dat1
@@ -327,7 +327,7 @@ ggplot(faithful, aes(x = waiting)) +
 
 ## base
 hist(faithful$waiting)
-abline(v = mean(faithful$waiting), col = "red", lwd = 2, lty = 1)
+abline(v = mean(faithful$waiting), col = "red", lwd = 2, lty = 2)
 
 ### Több csoport hisztogramja és sűrűségfüggvény görbéje
 # data frame definiálása
@@ -362,7 +362,8 @@ ggplot(dat4, aes(x = cond, y = rating, fill=cond)) + geom_boxplot()
 
 ## base
 # boxplot függvény
-boxplot(dat4$rating ~ dat4$cond, data = dat4, col=c('mistyrose', 'powderblue'))
+boxplot(dat4$rating ~ dat4$cond, data = dat4, 
+        col = c('mistyrose', 'powderblue'))
 
 
 #---Plotok kimentése------------------------------------------------------------
@@ -378,5 +379,6 @@ ggsave("fig/ggplot2_boxplot.png", width = 10, height = 5, dpi = 100)
 ## base
 # pdf, svg, png stb. függvények attól függően, hogy mibe szeretnénk menteni
 png("fig/base_boxplot.png", width = 960, height = 560, res = 120)
-boxplot(dat4$rating ~ dat4$cond, data = dat4, col=c('mistyrose', 'powderblue'))
+boxplot(dat4$rating ~ dat4$cond, data = dat4, 
+        col = c('mistyrose', 'powderblue'))
 dev.off()
