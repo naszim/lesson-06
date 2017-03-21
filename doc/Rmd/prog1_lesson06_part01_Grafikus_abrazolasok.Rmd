@@ -42,21 +42,21 @@ knitr::opts_knit$set(root.dir = '../../')
 ## ```base``` és ```ggplot2```
 - az R alapjáraton tartalmaz ábrázolásra használható függvényeket és emellett van egy nagyon kedvelt package, a ```ggplot2```, ami kifejezetten vizualizációs célú
 - hogy melyik használata a jobb, egyrészt célfüggő, másrészt attól is függ, hogy ki mit szokott meg:
-  * http://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/
-  * http://varianceexplained.org/r/why-I-use-ggplot2/
-  * http://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/
+    - [Flowing Data bejegyzés ```ggplot2``` vs ```base``` témában](http://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/){target="_blank"}
+    - [Variance Explained bejegyzés ```ggplot2``` vs ```base``` témában](http://varianceexplained.org/r/why-I-use-ggplot2/){target="_blank"}
+    - [Simply Statistics bejegyzés  ```ggplot2``` vs ```base``` témában](http://simplystatistics.org/2016/02/11/why-i-dont-use-ggplot2/){target="_blank"}
 - az adatokkal ismerkedés közben sokan maradnak a ```base``` package függvényeinél, mert gyorsan ad valamilyen képet az adatokról, és nem fontos, hogy szép legyen a plot
-- ha már elkezdjük szépítgetni a plotokat, a ```ggplot2``` lehetőségeivel könnyebb dolgunk lehet
+- ha már elkezdjük szépítgetni, bonyolítani a plotokat, a ```ggplot2``` lehetőségeivel könnyebb dolgunk lehet
 - a ```ggplot2``` előnye, hogy az ún. [```grammar of graphics```](#http://rdatascience.io/pycon2014-r/visualize/ggplot2.html){target="_blank"} nyelvezetét használja, ami egy konzisztens grafikai rendszert épít ki és más vizualizációs toolok is használják
 - amiket nem lehet velük, más package-ek szükségesek:
-  * 3D plotok (pl. ```rgl```, ```scatterplot3d```)
-  * hálózatok (pl. ```igraph```, ```d3Network```, ```ggnet2```)
-  * interaktív plotok (pl. ```ggvis```, ```d3r```, ```plotly```)
+    - 3D plotok (pl. ```rgl```, ```scatterplot3d```)
+    - hálózatok (pl. ```igraph```, ```d3Network```, ```ggnet2```)
+    - interaktív plotok (pl. ```ggvis```, ```d3r```, ```plotly```)
 
 --------------------------------------------------------------------------------
 
 ## Adatok előkészítése a vizualizációkhoz
-- vizualizálni leginkább data frame objektumokat szoktunk, de package-től függően mátrixokat, vektorokat is
+- vizualizálni leginkább data frame objektumokat és azok elemeit szoktunk, de package-től függően mátrixokat, vektorokat stb-t is
 - a data frame-eknek van egy ún. széles és hosszú formája (wide and long format), a ```ggplot2``` utóbbit preferálja
 
 ### Data frame átalakítása ```reshape2```-vel
@@ -79,16 +79,16 @@ wide_df
 
 # átalakítás long formatra a melt függvénnyel
 # id.vars: kategóriát tartalmazó oszlop(ok), amit meg akarunk tartani
-melt(wide_df, id.vars=c("subject", "sex"))
+melt(wide_df, id.vars = c("subject", "sex"))
 
 # átalakítás long formatra további opciókkal
 # measure.vars: értéket, gyakoriságokat tartalmazó forrás oszlopok
 # variable.name: új oszlop neve, hogy az érték, gyakoriság honnan jön
 # value.name: értéket, gyakoriságot tartalmazó új oszlop neve
-long_df <- melt(wide_df, id.vars=c("subject", "sex"),
-                measure.vars=c("control", "cond1", "cond2" ), 
-                variable.name="condition",
-                value.name="measurement")
+long_df <- melt(wide_df, id.vars = c("subject", "sex"),
+                measure.vars = c("control", "cond1", "cond2" ), 
+                variable.name = "condition",
+                value.name = "measurement")
 long_df
 
 ```
@@ -121,7 +121,7 @@ pg_mean
 # bar graph-ot készítünk: geom_bar
 # értéket ábrázolunk: stat = "identity"
 ggplot(data = pg_mean, aes(x = group, y = weight)) + 
-  geom_bar(stat = "identity", fill="#AFC0CB") +
+  geom_bar(stat = "identity", fill = "#AFC0CB") +
   ggtitle("Means of results from an experiment on plant growth") +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -142,7 +142,7 @@ head(diamonds)
 ## ggplot2
 # gyakoriságot ábrázolunk: stat = "count"
 ggplot(data = diamonds, aes(x = cut)) + 
-  geom_bar(stat = "count", fill="#AFC0CB") +
+  geom_bar(stat = "count", fill = "#AFC0CB") +
   ggtitle("Count of diamond cuts") +
   theme(plot.title = element_text(hjust = 0.5))
 
@@ -193,7 +193,7 @@ legend("topright", row.names(cabbage_mat), pch = 15, col = mf_col)
 --------------------------------------------------------------------------------
 
 ## Vonaldiagramok (Line Graphs)
-- ha azt szeretnénk ábrázolni, hogy egy folytonos változót (y-tengely), hogy hogyan alakul egy másik folytonos változó függvényében (x-tengely)
+- ha azt szeretnénk ábrázolni, hogy egy folytonos változó (y-tengely) hogyan alakul egy másik folytonos változó függvényében (x-tengely)
 - az x-tengelyen gyakran az idő van, tehát az idősorok ábrázolása is ebbe a kategóriába tartozik, de lehet más folytonos változó is, pl. egy kísérlet során adagolt gyógyszer mennyisége
 - adott esetben ordinális mérési szintű változókat is ábrázolhatunk ilyen módon, de nominálisakat nem
 
@@ -218,12 +218,12 @@ ggplot(BOD1, aes(x = Time, y = demand, group = 1)) + geom_line()
 
 ## base
 # line graph-ot csinálunk: plot függvény type = "l" argumentummal 
-plot(BOD$Time, BOD$demand, type = "l", xlab = "time", ylab = "total bill")
+plot(BOD$Time, BOD$demand, type = "l", xlab = "time", ylab = "demand")
 
 # y-tengely most nem időt jelöl, hanem más folytonos változó
 # data frame definiálása
 dat1 <- data.frame(
-  time = factor(c("Lunch","Dinner"), levels=c("Lunch","Dinner")),
+  time = factor(c("Lunch", "Dinner"), levels = c("Lunch", "Dinner")),
   total_bill = c(14.89, 17.23)
 )
 dat1
@@ -239,7 +239,7 @@ ggplot(data = dat1, aes(x = time, y = total_bill, group = 1)) +
     geom_point(colour = "red", size = 4, shape = 21, fill = "white")
 
 ## base
-plot(c(1, 2), dat1$total_bill, type = "l", xlab = "time", ylab = "", lty = 2,
+plot(c(1, 2), dat1$total_bill, type = "l", xlab = "time", ylab = "total bill", lty = 2,
      lwd = 3, col = "red")
 points(c(1, 2), dat1$total_bill, pch = 21, col = "red", cex = 2, bg = "white",
        lwd = 3)
@@ -387,9 +387,9 @@ source("src/prog1_lesson06_part01_Grafikus_abrazolasok_functions.R")
 c2009 <- subset(countries, Year == 2009, 
                 select = c(Name, GDP, laborrate, healthexp, infmortality))
 
-pairs(c2009[,2:5])
+pairs(c2009[, 2:5])
 
-pairs(c2009[,2:5], upper.panel = panel.cor,
+pairs(c2009[, 2:5], upper.panel = panel.cor,
       diag.panel = panel.hist, lower.panel = panel.lm)
 ```
 
@@ -454,13 +454,14 @@ ggplot(faithful, aes(x = waiting)) +
 
 ## base
 hist(faithful$waiting)
-abline(v = mean(faithful$waiting), col = "red", lwd = 2, lty = 1)
+abline(v = mean(faithful$waiting), col = "red", lwd = 2, lty = 2)
 
 ### Több csoport hisztogramja és sűrűségfüggvény görbéje
 # data frame definiálása
 set.seed(1234)
 dat4 <- data.frame(cond = factor(rep(c("A","B"), each = 200)), 
                    rating = c(rnorm(200), rnorm(200, mean = .8)))
+head(dat4)
 
 ## ggplot2
 # hisztogram
